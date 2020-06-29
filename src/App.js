@@ -1,23 +1,44 @@
 import React from "react"
-import logo from "./logo.svg"
-import "./App.css"
+import Title from "./components/Title"
+import Pokemon from "./components/Pokemon"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          welcome to Coadiasseur.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello World!
-        </a>
+    <div>
+      <main>
+        <Title content="React is fun" />
+        <Pokemon
+          name = "Charrizard"
+          weight = "90"
+          awesome = {false}
+          terrifying = {false}
+          abillities = {'Blaze, Solar power, Though claws, Drought'}
+        />
+        <Pokemon
+          name = "Bulbasaur"
+          weight = "6.9"
+          awesome = {true}
+          terrifying = {false}
+          abilities = {"Overgrow, Chlorophyll"}
+        />
+         <Pokemon
+          name = "Mewtwo"
+          weight = "122"
+          awesome = {true}
+          terrifying = {true}
+          abilities = {"Pressure, Unnerve, Steadfast, Insomnia"}
+        />
+         <Pokemon
+          name = "Mega beedrill"
+          weight = "65"
+          awesome = {false}
+          terrifying = {true}
+          abilities = {"intimidate, Unnerve"}
+        />
+      </main>
+
+      <header>
+        <p>welcome to Codaisseur.</p>
       </header>
     </div>
   )
