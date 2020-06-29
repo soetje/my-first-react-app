@@ -1,0 +1,28 @@
+.element_container {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+}
+.element_container .rotate_me {
+  -webkit-transition: all 1.3s ease-out;
+  -moz-transition: all 1.3s ease-out;
+  -ms-transition: all 1.3s ease-out;
+  -o-transition: all 1.3s ease-out;
+  transition: all 1.3s ease-out;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  margin-top: -25px;
+  background: red;
+}
+.element_container:hover .rotate_me {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+  left: 80%;
+}
