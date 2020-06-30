@@ -1,6 +1,8 @@
 import React from "react"
 import Title from "./components/Title"
 import Pokemon from "./components/Pokemon/Pokemon"
+import LikeCounter from "./components/LikeCounter"
+import LikeButton from "./components/LikeButton"
 
 const all_pokemon = [
   {
@@ -37,9 +39,11 @@ function App() {
   return (
     <main className="container my-5">
       <Title content="Awesome App React" />
+      <LikeCounter />
+      <LikeButton />
       <div className="row">
         {all_pokemon.map((pokemon) => (
-          <div className="col-md-6 col-lg-4">
+          <div key={pokemon.weight} className="col-md-6 col-lg-4">
             <Pokemon
               name={pokemon.name}
               weight={pokemon.weight}
