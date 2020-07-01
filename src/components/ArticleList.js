@@ -1,26 +1,26 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import ArticleCard from "./ArticleCard"
+import Timeout from "await-timeout"
+import axios from "axios"
 
 export default function ArticleList() {
-  const [articles, set_articles] = useState([
-    {
-      id: 1,
-      title: "What is React all about?",
-      body:
-        "React is all about one-way data flow, the Virtual DOM, and transpiling JSX.",
-    },
-    {
-      id: 2,
-      title: "A lovely kid",
-      body: "In fact, a kid is also the name of a baby goat!",
-    },
-    {
-      id: 3,
-      title: "On placeholder image URLs",
-      body:
-        "So yeah, you won't be able to look these images up. They're placeholders",
-    },
-  ])
+  const [articles, set_articles] = useState()
+
+  useEffect(() => {
+    async function doSomeDataFetching() {
+      console.log("I'm gonna fetch some data!")
+
+      // Getting back data from the net, through the wire, air, and the ocean:
+      const res = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts?_limit=5"
+      )
+      await Timeout.set(2000)
+      console.log("Got back:", res)
+      set_articles(res.data)
+    }
+
+    doSomeDataFetching()
+  }, [])
 
   return (
     <div>
@@ -32,10 +32,16 @@ export default function ArticleList() {
       >
         clear notifications
       </button>
-      
-      {articles.map((article) => {
-        return <ArticleCard key={article.id} cardTitle={article.title} content={article.body} />
-      })}
+
+      {articles
+        ? articles.map((article) => (
+            <ArticleCard
+              key={article.id}
+              cardTitle={article.title}
+              content={article.body}
+            />
+          ))
+        : "loading..."}
     </div>
   )
 }
